@@ -11,22 +11,18 @@ const game ={
         2: new Audio("sounds/hat.mp3"),
         3: new Audio("sounds/crash.mp3")
     },
-    clearGame(){
-        game.currentGame = [];
-        game.count = 0;
-    },
     randomSound(){
         const index = Math.floor(Math.random() * 4)
         const randomSound = this.possibilities[index];
         this.currentGame.push(randomSound); 
         this.soundArray.push(index)
         console.log(this.currentGame) 
-        // this.compPlay();
     },
     compPlay(){
-       let i = 0;
-       const myInt = setInterval(() => {
-           // sound represents the sound that will be played
+        this.randomSound();
+        let i = 0;
+        const myInt = setInterval(() => {
+            // sound represents the sound that will be played
             let sound = this.soundArray[i]
             //compSound represents the element that will be lit
             let compSound = this.currentGame[i];
@@ -40,9 +36,36 @@ const game ={
                 clearInterval(myInt)
             }
             i++;
-       },1000)
-
-       
+        },1000)
+    }, 
+    playerPlay(){        
+        kickDrum.addEventListener('click', () => {
+            game.sounds[0].play();
+            this.player.push('#kick')
+            console.log(this.player)
+        })
+        snareDrum.addEventListener('click', () => {
+            game.sounds[1].play();
+            this.player.push("#snare")
+            console.log(this.player)
+        })
+        hiHats.addEventListener('click', () => {
+            game.sounds[2].play();
+            this.player.push("#hitHat")
+            console.log(this.player)
+        })
+        crash.addEventListener('click', () => {
+            game.sounds[3].play();
+            this.player.push("#cymbal")
+            console.log(this.player)
+        }) 
+    },
+    check(){
+        if(this.player === this.currentGame){
+            alert('cool')
+        } else {
+            alert('not cool')
+        }
     }
 }
 //DOM
@@ -54,21 +77,10 @@ const start = document.querySelector("#start")
 const round = document.querySelector("#displayRound")
 
 //BUTTON EVENTS 
-kickDrum.addEventListener('click', () => {
-    game.sounds[0].play();
-})
-snareDrum.addEventListener('click', () => {
-    game.sounds[1].play();
-})
-hiHats.addEventListener('click', () => {
-    game.sounds[2].play();
-})
-crash.addEventListener('click', () => {
-    game.sounds[3].play();
-})
+
 start.addEventListener('click', () => {
     round.innerText = game.count++;
-    game.randomSound();
-    game.compPlay(); 
+    game.compPlay();
+    game.playerPlay();
 })
 
