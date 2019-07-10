@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Iceland&display=swap');
+
+body {
+    margin: 0;
+    background-color: rgba(141, 0, 0, 0.6);
+}
+
+h1 {
+    font-family: 'Iceland', cursive;
+    color: rgba(8, 105, 31, 0.6);
+}
+
+#main {
+    margin: 10%;
+    padding: 3%;
+    background-color: rgba(207, 207, 195, 0.945);
+}
+
+#display-screen{
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+    background-color: #000;
+}
+
+#square-placement {
+    height: 150px;
+    border: black 5px;
+}
+
+
+.squares{
+    align-content: flex-end;
+    display: inline-table;
+    background-color: #000;
+    color: #fff;
+    display: inline-flex;
+    width: 5rem;
+    height: 5rem;
+}
+
+.squares:hover{
+    background-color: gray;
+}
+
+.hover{
+    background-color: gray;
+}
