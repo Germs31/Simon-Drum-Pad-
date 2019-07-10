@@ -5,6 +5,7 @@ const game ={
     currentGame: [],
     soundArray:[],
     player: [],
+    start: true,
     sounds: {
         0: new Audio("sounds/kick.mp3"),
         1: new Audio("sounds/snare.mp3"),
@@ -21,6 +22,7 @@ const game ={
     compPlay(){
         this.randomSound();
         let i = 0;
+        this.player = [];
         const myInt = setInterval(() => {
             // sound represents the sound that will be played
             let sound = this.soundArray[i]
@@ -36,35 +38,48 @@ const game ={
                 clearInterval(myInt)
             }
             i++;
-        },1000)
+        },1500)
     }, 
     playerPlay(){        
         kickDrum.addEventListener('click', () => {
-            game.sounds[0].play();
             this.player.push('#kick')
+            game.sounds[0].currentTime = 0
+            game.sounds[0].play();
+            this.check()
             console.log(this.player)
         })
         snareDrum.addEventListener('click', () => {
-            game.sounds[1].play();
             this.player.push("#snare")
+            game.sounds[1].currentTime = 0
+            game.sounds[1].play();
+            this.check()
             console.log(this.player)
         })
         hiHats.addEventListener('click', () => {
+            this.player.push("#hiHat")
+            game.sounds[2].currentTime = 0
             game.sounds[2].play();
-            this.player.push("#hitHat")
+            this.check()
             console.log(this.player)
         })
         crash.addEventListener('click', () => {
-            game.sounds[3].play();
             this.player.push("#cymbal")
+            game.sounds[3].currentTime = 0
+            game.sounds[3].play();
+            this.check()
             console.log(this.player)
         }) 
     },
     check(){
-        if(this.player === this.currentGame){
-            alert('cool')
-        } else {
-            alert('not cool')
+        if(this.player[this.player.length -1 ] !== this.currentGame[this.player.length -1]){
+            this.count= 1,
+            this.currentGame= [],
+            this.soundArray=[],
+            this.player= []
+            alert("game over")
+        } else if(this.player.length === this.currentGame.length){
+            round.innerText = game.count++;
+            this.compPlay()
         }
     }
 }
@@ -81,6 +96,9 @@ const round = document.querySelector("#displayRound")
 start.addEventListener('click', () => {
     round.innerText = game.count++;
     game.compPlay();
-    game.playerPlay();
+    if (game.start){
+        game.playerPlay();
+        game.start = false
+    }
 })
 
