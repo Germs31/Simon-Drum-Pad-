@@ -9,7 +9,7 @@ Objective:
 - This version is an infinite game. You play untill you lose. 
 
 # Introduction 
-Simon was released 1978. It has had a remarkable succuess for years. The concept of Simon has always been very appealing, entertaining, and great for muscle memory. the recreation of this game involed javascript essentials and was a very fun to recreate and add a little twist to.  
+Simon was released 1978. It has had a remarkable succuess for years. The concept of Simon has always been very appealing, entertaining, and great for muscle memory. the recreation of this game involved javascript essentials and was very fun to recreate and add a little musical twist to.  
 
 # Languages Used 
 - HTML5

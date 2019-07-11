@@ -42,14 +42,16 @@ const game ={
             this.sounds[`${sound}`].play()
             setTimeout(()=>{
                 selected.classList.remove("hover")
-            },500)
+            },1000)
             if(i === this.currentGame.length -1 ){
                 clearInterval(myInt)
             }
             i++;
-        },900)
+        },1500)
+    
     }, 
     playerPlay(){ 
+       
         //DRUM BUTTONS       
         kickDrum.addEventListener('click', () => {
             this.player.push('#kick')
