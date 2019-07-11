@@ -1,3 +1,12 @@
+//SIMON BEAT EDITION JAVASCRIPT
+//DOM
+const kickDrum = document.querySelector("#kick")
+const snareDrum = document.querySelector("#snare")
+const hiHats = document.querySelector("#hiHat")
+const crash = document.querySelector("#cymbal")
+const start = document.querySelector("#start")
+const round = document.querySelector("#displayRound")
+
 //GAME OBJECT
 const game ={ 
     count: 1,
@@ -38,9 +47,10 @@ const game ={
                 clearInterval(myInt)
             }
             i++;
-        },1500)
+        },900)
     }, 
-    playerPlay(){        
+    playerPlay(){ 
+        //DRUM BUTTONS       
         kickDrum.addEventListener('click', () => {
             this.player.push('#kick')
             game.sounds[0].currentTime = 0
@@ -70,28 +80,27 @@ const game ={
             console.log(this.player)
         }) 
     },
+    clear(){
+        round.innerText = "";
+    },
     check(){
         if(this.player[this.player.length -1 ] !== this.currentGame[this.player.length -1]){
             this.count= 1,
             this.currentGame= [],
             this.soundArray=[],
             this.player= []
+            this.clear();
             alert("game over")
         } else if(this.player.length === this.currentGame.length){
             round.innerText = game.count++;
             this.compPlay()
+
         }
     }
 }
-//DOM
-const kickDrum = document.querySelector("#kick")
-const snareDrum = document.querySelector("#snare")
-const hiHats = document.querySelector("#hiHat")
-const crash = document.querySelector("#cymbal")
-const start = document.querySelector("#start")
-const round = document.querySelector("#displayRound")
 
-//BUTTON EVENTS 
+
+//START BUTTON 
 
 start.addEventListener('click', () => {
     round.innerText = game.count++;
@@ -101,4 +110,6 @@ start.addEventListener('click', () => {
         game.start = false
     }
 })
+
+
 
